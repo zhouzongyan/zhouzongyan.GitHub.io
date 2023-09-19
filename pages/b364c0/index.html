@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>02 useState基础用法 | Allen</title>
+    <meta name="generator" content="VuePress 1.9.2">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="rust">
+    <meta name="keywords" content="allen,,blog,vdoing">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.145d8473.css" as="style"><link rel="preload" href="/assets/js/app.6f8ed848.js" as="script"><link rel="preload" href="/assets/js/2.83be7545.js" as="script"><link rel="preload" href="/assets/js/9.845b950f.js" as="script"><link rel="prefetch" href="/assets/js/10.5a3204f9.js"><link rel="prefetch" href="/assets/js/11.02768c01.js"><link rel="prefetch" href="/assets/js/12.2c0a6e69.js"><link rel="prefetch" href="/assets/js/13.aab6b678.js"><link rel="prefetch" href="/assets/js/14.099be2b5.js"><link rel="prefetch" href="/assets/js/15.a608c94d.js"><link rel="prefetch" href="/assets/js/16.e2819852.js"><link rel="prefetch" href="/assets/js/17.86af6682.js"><link rel="prefetch" href="/assets/js/18.c8537385.js"><link rel="prefetch" href="/assets/js/19.eab216d3.js"><link rel="prefetch" href="/assets/js/20.682aa922.js"><link rel="prefetch" href="/assets/js/21.219bb420.js"><link rel="prefetch" href="/assets/js/22.84ecdbb0.js"><link rel="prefetch" href="/assets/js/23.b55b7082.js"><link rel="prefetch" href="/assets/js/24.0828344e.js"><link rel="prefetch" href="/assets/js/25.c20d5ec5.js"><link rel="prefetch" href="/assets/js/26.06149e04.js"><link rel="prefetch" href="/assets/js/27.d221eed5.js"><link rel="prefetch" href="/assets/js/28.53082f18.js"><link rel="prefetch" href="/assets/js/29.eedb3a2c.js"><link rel="prefetch" href="/assets/js/3.136b0782.js"><link rel="prefetch" href="/assets/js/30.43e5e245.js"><link rel="prefetch" href="/assets/js/4.2e56199c.js"><link rel="prefetch" href="/assets/js/5.2ab3c7f2.js"><link rel="prefetch" href="/assets/js/6.fa34b130.js"><link rel="prefetch" href="/assets/js/7.9dab484c.js"><link rel="prefetch" href="/assets/js/8.d763ac36.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.145d8473.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Allen" class="logo"> <span class="site-name can-hide">Allen</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/pages/dfd26d/" class="sidebar-link">01 React Hook 简介</a></li><li><a href="/pages/b364c0/" aria-current="page" class="active sidebar-link">02 useState基础用法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/b364c0/#usestate概念解释" class="sidebar-link">useState概念解释</a></li><li class="sidebar-sub-header level2"><a href="/pages/b364c0/#usestate是来解决类组件什么问题的" class="sidebar-link">useState是来解决类组件什么问题的？</a></li><li class="sidebar-sub-header level2"><a href="/pages/b364c0/#usestate函数源码" class="sidebar-link">useState函数源码：</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level5"><a href="/pages/b364c0/#补充一些typescript常识" class="sidebar-link">补充一些TypeScript常识：</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/b364c0/#usestate基本用法" class="sidebar-link">useState基本用法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level5"><a href="/pages/b364c0/#代码形式" class="sidebar-link">代码形式：</a></li><li class="sidebar-sub-header level5"><a href="/pages/b364c0/#拆解说明" class="sidebar-link">拆解说明：</a></li><li class="sidebar-sub-header level4"><a href="/pages/b364c0/#variable-补充说明" class="sidebar-link">'variable'补充说明</a></li><li class="sidebar-sub-header level5"><a href="/pages/b364c0/#setvariable-补充说明" class="sidebar-link">'setVariable'补充说明：</a></li><li class="sidebar-sub-header level5"><a href="/pages/b364c0/#value-补充说明" class="sidebar-link">'value'补充说明：</a></li><li class="sidebar-sub-header level5"><a href="/pages/b364c0/#newvalue-补充说明-非常重要" class="sidebar-link">'newValue'补充说明(非常重要)：</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/b364c0/#usestate使用示例" class="sidebar-link">useState使用示例：</a></li><li class="sidebar-sub-header level2"><a href="/pages/b364c0/#练习题" class="sidebar-link">练习题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level5"><a href="/pages/b364c0/#完整示例" class="sidebar-link">完整示例：</a></li></ul></li></ul></li><li><a href="/pages/0e215c/" class="sidebar-link">03 useState高级用法</a></li><li><a href="/pages/16dc88/" class="sidebar-link">04 useEffect基础用法</a></li><li><a href="/pages/b9c039/" class="sidebar-link">05 useEffect高级用法</a></li><li><a href="/pages/fd14d7/" class="sidebar-link">06 useContext基础用法</a></li><li><a href="/pages/15da39/" class="sidebar-link">07 useContext高级用法</a></li><li><a href="/pages/ab6774/" class="sidebar-link">08 useReducer基础用法</a></li><li><a href="/pages/fd7fdb/" class="sidebar-link">09 useReducer高级用法</a></li><li><a href="/pages/9d19f1/" class="sidebar-link">10 useCallback基础用法</a></li><li><a href="/pages/8b008f/" class="sidebar-link">11 useMemo基础用法</a></li><li><a href="/pages/4c9695/" class="sidebar-link">12 useRef基础用法</a></li><li><a href="/pages/ede426/" class="sidebar-link">13 useImperativeHandle基础用法</a></li><li><a href="/pages/1b392f/" class="sidebar-link">14 useLayoutEffect基础用法</a></li><li><a href="/pages/e1ebef/" class="sidebar-link">15 useDebugValue基础用法</a></li><li><a href="/pages/c38877/" class="sidebar-link">16 自定义hook</a></li><li><a href="/pages/621c1c/" class="sidebar-link">17 React Hook 总结</a></li><li><a href="/pages/a44117/" class="sidebar-link">18 示例：React使用Echarts所用到的hooks</a></li><li><a href="/pages/74a184/" class="sidebar-link">19 useTransition基础用法</a></li><li><a href="/pages/0116b5/" class="sidebar-link">20 React基础知识</a></li><li><a href="/pages/89216e/" class="sidebar-link">21 React扩展阅读</a></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><span data-v-06225672>react</span></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="//github.183.co" target="_blank" title="作者" class="beLink" data-v-06225672>Allen</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2023-09-06</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">02 useState基础用法<!----></h1> <div class="page-slot page-slot-top">
+    <div class="wwads-cn wwads-horizontal page-wwads" data-id="136"></div>
+    <style>
+      .page-wwads{
+        width:100%!important;
+        min-height: 0;
+        margin: 0;
+      }
+      .page-wwads .wwads-img img{
+        width:80px!important;
+      }
+      .page-wwads .wwads-poweredby{
+        width: 40px;
+        position: absolute;
+        right: 25px;
+        bottom: 3px;
+      }
+      .wwads-content .wwads-text, .page-wwads .wwads-text{
+        height: 100%;
+        padding-top: 5px;
+        display: block;
+      }
+  </style>
+  </div> <div class="theme-vdoing-content content__default"><h1 id="_02-usestate基础用法"><a href="#_02-usestate基础用法" class="header-anchor">#</a> 02 useState基础用法</h1> <h2 id="usestate概念解释"><a href="#usestate概念解释" class="header-anchor">#</a> useState概念解释</h2> <p>我们第一个要学习的Hook(钩子函数)是useState，他的作用是“勾住”函数组件中自定义的变量。</p> <p>“勾住”？<br>
+回顾一下 “React Hook 简介” 文中那句话：Hook本身单词意思是“钩子”，作用就是“勾住某些生命周期函数或某些数据状态，并进行某些关联触发调用”。</p> <p>“如何勾住”？
+在React底层代码中，是通过自定义dispatcher，采用“发布订阅模式”实现的。</p> <p>关于“钩子”、“勾住”、“如何勾住”的概念以后在学习其他Hook函数时不再做解释。</p> <h2 id="usestate是来解决类组件什么问题的"><a href="#usestate是来解决类组件什么问题的" class="header-anchor">#</a> useState是来解决类组件什么问题的？</h2> <p>答：useState能够解决类组件 <strong>所有自定义变量只能存储在this.state</strong> 的问题。</p> <p>举例：若某组件需要有2个自定义变量name和age，那么在类组件中只能如下定义</p> <div class="language- extra-class"><pre><code>constructor(props) {
+    super(props);
+    this.state = {
+      name:'puxiao',
+      age:34
+    }
+}
+</code></pre></div><p>name和age只能作为this.state的一个属性。</p> <p>没有对比就没有伤害，看一下使用useState后，函数组件是如何实现上述需求的</p> <div class="language- extra-class"><pre><code>const [name,setName] = useState('puxiao');
+const [age,setAge] = useState(34);
+</code></pre></div><p>1、函数组件本身是一个函数，不是类，因此没有构造函数constructor(props)；<br>
+2、任何你想定义的变量都可以单独拆分出去，独立定义，互不影响；</p> <p>两段代码对比之下，你就会发现使用Hook的useState后，会让我们定义的变量相对独立，清晰简单，便于管理。</p> <p>接下来开始学习useState。</p> <h2 id="usestate函数源码"><a href="#usestate函数源码" class="header-anchor">#</a> useState函数源码：</h2> <p>首先看一下React源码中的<a href="https://github.com/facebook/react/blob/master/packages/react/src/ReactHooks.js" target="_blank" rel="noopener noreferrer">ReactHooks.js<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <div class="language- extra-class"><pre><code>//备注：源码采用TypeScript编写，如果不懂TS代码，阅读起来稍显困难
+export function useState&lt;S&gt;(
+  initialState: (() =&gt; S) | S,
+): [S, Dispatch&lt;BasicStateAction&lt;S&gt;&gt;] {
+  const dispatcher = resolveDispatcher();
+  return dispatcher.useState(initialState);
+}
+</code></pre></div><p>上述代码看不懂没关系，本系列教程只是讲述“如何使用Hook”，并不是“Hook源码分析”。之所以贴出源码只是为了显得本文比较有深度。^_^</p> <p><strong>更新于2020.11.10，这里强调一下：React 源码中使用的是 flow 语法，根本不是 TypeScript 语法，只不过 2 者实在是太像了，以至于让我之前一直误以为 React 源码中是 TS。不过你完全可以将 TS 的泛型知识去套用到 flow 中。在此特别说明一下，至于后续章节中就不再做提醒和修改了，你就当成 TS 语法去理解也行。</strong></p> <h5 id="补充一些typescript常识"><a href="#补充一些typescript常识" class="header-anchor">#</a> 补充一些TypeScript常识：</h5> <p>1、react 本身采用TypeScript编写，还是补充点TS常识，方便对各个 hook 函数源码的理解。<br>
+2、对于useState以及以后要学习的其他hook函数源码，函数参数中会反复出现&lt;S&gt;、&lt;T&gt;、&lt;P&gt;、&lt;I&gt;、&lt;I&gt;，这些大写字母，react约定他们对应的单词如下：<br>
+state -&gt; S -&gt; 约定表示某种“数据”<br>
+type -&gt; T -&gt; 约定表示某种“类型”<br>
+props -&gt; P -&gt; 约定表示“属性传值对应的props”<br>
+initial -&gt; I -&gt; 约定表示某个“初始值”</p> <p>1、这种用&lt;X&gt;包裹起来的类型声明，在TS中成为“泛型”。理论上是可以使用任意单词的，上面那些缩写只是react自己约定单词缩写。<br>
+2、对于一段TS代码，如果出现了&lt;S&gt;，那么后面所有的&lt;S&gt;都将表示“某种相同类型的数据”。对于TypeScript的泛型相关知识，请自己百度学习。</p> <h2 id="usestate基本用法"><a href="#usestate基本用法" class="header-anchor">#</a> useState基本用法</h2> <p>useState(value)函数会返回一个数组，该数组包含2个元素：第1个元素为我们定义的变量，第2个元素为修改该变量对应的函数名称。</p> <h5 id="代码形式"><a href="#代码形式" class="header-anchor">#</a> 代码形式：</h5> <div class="language- extra-class"><pre><code>const [variable,setVariable] = useState(value);
+//....
+setVariable(newValue);//修改variable的值
+</code></pre></div><h5 id="拆解说明"><a href="#拆解说明" class="header-anchor">#</a> 拆解说明：</h5> <p>1、const [a,b] = [a,b] 这种形式为ES6的“解构赋值”；<br>
+2、'variable'为函数组件中自定义的变量名；<br>
+3、'setVariable'为修改'variable'对应的函数名；<br>
+4、'useState'为本次学习的Hook函数；<br>
+5、'value'为变量默认值<br>
+6、'setVariable(newValue)'为调用setVariable并将新的值newValue赋值给variable；</p> <h4 id="variable-补充说明"><a href="#variable-补充说明" class="header-anchor">#</a> 'variable'补充说明</h4> <p>1、variable为变量名，实际使用中可以修改成任意变量名，比如name、age、count等等；<br>
+2、但是，函数组件接收父级组件属性传值的变量名为props，因此建议你不要将变量名定为props，以免混淆；<br>
+3、我不听话，我就非要将变量名定义成props，那又会怎么样？答案是不会有什么问题，不仅不会报错而且还会正常执行。</p> <h5 id="setvariable-补充说明"><a href="#setvariable-补充说明" class="header-anchor">#</a> 'setVariable'补充说明：</h5> <p>1、该名称采用 &quot;set&quot;+&quot;变量名&quot; 的驼峰命名形式，只是为了提高代码可读性。<br>
+2、一般React项目都约定使用此种命名方式，所以推荐你也如此使用。<br>
+3、当然你也可以使用任意你喜欢的命名风格，但是切记不能以数字开头。</p> <h5 id="value-补充说明"><a href="#value-补充说明" class="header-anchor">#</a> 'value'补充说明：</h5> <p>1、必填项，不可缺省，若缺省则实际运行时会提示变量名未定义；<br>
+2、值的类型可以是字符串、数字、数组、对象；<br>
+3、值还可以为null，但不可以为undefined；</p> <h5 id="newvalue-补充说明-非常重要"><a href="#newvalue-补充说明-非常重要" class="header-anchor">#</a> 'newValue'补充说明(非常重要)：</h5> <p>setVariable采用 “异步直接赋值” 的形式，并不会像类组件中的setState()那样做“异步对比累加赋值”。</p> <p>“异步”？<br>
+这里的“异步”和类组件中setState中的异步是同一个意思，都是为了优化React渲染性能而故意为之。</p> <p>&quot;直接赋值&quot;？<br>
+1、在Hook中，对于简单类型数据，比如number、string类型，可以直接通过setVariable(newValue)直接进行赋值。<br>
+2、但对于复杂类型数据，比如array、object类型，若想修改其中某一个属性值而不影响其他属性，则需要先复制出一份，修改某属性后再整体赋值。具体如何做，请看下一篇“useState高级用法”中“数据类型为Objcet/Array修改方法”内容。</p> <p>如果新值和当前值完全一样，那么会引发React重新渲染吗？请看下一篇“useState高级用法”中“性能优化”内容。</p> <p>停！上面的信息量有点多，让我们把思绪先回到最基础的用法上。</p> <h2 id="usestate使用示例"><a href="#usestate使用示例" class="header-anchor">#</a> useState使用示例：</h2> <div class="language- extra-class"><pre><code>//函数组件内定义变量name
+const [name,setName] = useState('nodejs'); //name默认值为nodejs
+
+//在函数组件内，某些事件交互处理函数中修改name的值，例如某次鼠标点击的处理函数handleClick
+const handleClick = () =&gt; {
+  setName('koa');
+  //请注意，setName('koa')是异步修改的，如果此时执行console.log(name) 输出的值依然是nodejs
+  //请留意下一篇文章 “03 useState高级用法” 中 “解决数据异步” 相关部分
+}
+</code></pre></div><p>上述代码中，我们进行了以下操作：<br>
+1、声明一个变量name、修改name的方法setName、并将name默认值设置为'nodejs'；<br>
+2、通过setName将name值修改为'koa'；</p> <p>注意：在一个组件中，可以不限次数使用useState()，因此，我们可以声明多个变量，例如下面代码：</p> <div class="language- extra-class"><pre><code>const [name,setName] = useState('puxiao');
+const [age,setAge] = useState(34);
+</code></pre></div><p>在该代码片段中，我们分别定义了2个变量：name、age 以及他们对应的修改函数setName、setAge。</p> <h2 id="练习题"><a href="#练习题" class="header-anchor">#</a> 练习题</h2> <p>用useState实现一个计数器，默认为0，每次点击+1。</p> <h5 id="完整示例"><a href="#完整示例" class="header-anchor">#</a> 完整示例：</h5> <div class="language- extra-class"><pre><code>import React, { useState } from 'react';
+
+function Component() {
+
+  const [count, setCount] = useState(0);
+
+  function clickHandler(){
+    setCount(count+1);
+  }
+
+  return &lt;div onClick={clickHandler}&gt;
+    {count}
+  &lt;/div&gt;
+}
+
+export default Component;
+</code></pre></div><p>请注意上述代码中，没有用到this，这就是函数组件中使用Hook的魅力之一，再也不用去关心烦人的this到底指向谁这个问题了。</p> <p>实际代码中，本人更加倾向于使用箭头函数来定义方法，所以上述 function clickHandler() 会写成：</p> <div class="language- extra-class"><pre><code>const clickHandler = () =&gt; {
+  setCount(count+1);
+}
+</code></pre></div><hr> <p>至此，关于useState基础用法已经讲完。</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023-09-19, 09:20:46</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/dfd26d/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">01 React Hook 简介</div></a> <a href="/pages/0e215c/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">03 useState高级用法</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/dfd26d/" class="prev">01 React Hook 简介</a></span> <span class="next"><a href="/pages/0e215c/">03 useState高级用法</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:allen@183.co" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="//github.183.co" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://i.y.qq.com/n2/m/share/details/taoge.html?id=8424326180&amp;hosteuin=" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>Allen | MIT License</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6f8ed848.js" defer></script><script src="/assets/js/2.83be7545.js" defer></script><script src="/assets/js/9.845b950f.js" defer></script>
+  </body>
+</html>

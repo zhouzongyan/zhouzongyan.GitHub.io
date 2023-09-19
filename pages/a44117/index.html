@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>18 示例：React使用Echarts所用到的hooks | Allen</title>
+    <meta name="generator" content="VuePress 1.9.2">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="rust">
+    <meta name="keywords" content="allen,,blog,vdoing">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.145d8473.css" as="style"><link rel="preload" href="/assets/js/app.6f8ed848.js" as="script"><link rel="preload" href="/assets/js/2.83be7545.js" as="script"><link rel="preload" href="/assets/js/25.c20d5ec5.js" as="script"><link rel="prefetch" href="/assets/js/10.5a3204f9.js"><link rel="prefetch" href="/assets/js/11.02768c01.js"><link rel="prefetch" href="/assets/js/12.2c0a6e69.js"><link rel="prefetch" href="/assets/js/13.aab6b678.js"><link rel="prefetch" href="/assets/js/14.099be2b5.js"><link rel="prefetch" href="/assets/js/15.a608c94d.js"><link rel="prefetch" href="/assets/js/16.e2819852.js"><link rel="prefetch" href="/assets/js/17.86af6682.js"><link rel="prefetch" href="/assets/js/18.c8537385.js"><link rel="prefetch" href="/assets/js/19.eab216d3.js"><link rel="prefetch" href="/assets/js/20.682aa922.js"><link rel="prefetch" href="/assets/js/21.219bb420.js"><link rel="prefetch" href="/assets/js/22.84ecdbb0.js"><link rel="prefetch" href="/assets/js/23.b55b7082.js"><link rel="prefetch" href="/assets/js/24.0828344e.js"><link rel="prefetch" href="/assets/js/26.06149e04.js"><link rel="prefetch" href="/assets/js/27.d221eed5.js"><link rel="prefetch" href="/assets/js/28.53082f18.js"><link rel="prefetch" href="/assets/js/29.eedb3a2c.js"><link rel="prefetch" href="/assets/js/3.136b0782.js"><link rel="prefetch" href="/assets/js/30.43e5e245.js"><link rel="prefetch" href="/assets/js/4.2e56199c.js"><link rel="prefetch" href="/assets/js/5.2ab3c7f2.js"><link rel="prefetch" href="/assets/js/6.fa34b130.js"><link rel="prefetch" href="/assets/js/7.9dab484c.js"><link rel="prefetch" href="/assets/js/8.d763ac36.js"><link rel="prefetch" href="/assets/js/9.845b950f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.145d8473.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Allen" class="logo"> <span class="site-name can-hide">Allen</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/pages/dfd26d/" class="sidebar-link">01 React Hook 简介</a></li><li><a href="/pages/b364c0/" class="sidebar-link">02 useState基础用法</a></li><li><a href="/pages/0e215c/" class="sidebar-link">03 useState高级用法</a></li><li><a href="/pages/16dc88/" class="sidebar-link">04 useEffect基础用法</a></li><li><a href="/pages/b9c039/" class="sidebar-link">05 useEffect高级用法</a></li><li><a href="/pages/fd14d7/" class="sidebar-link">06 useContext基础用法</a></li><li><a href="/pages/15da39/" class="sidebar-link">07 useContext高级用法</a></li><li><a href="/pages/ab6774/" class="sidebar-link">08 useReducer基础用法</a></li><li><a href="/pages/fd7fdb/" class="sidebar-link">09 useReducer高级用法</a></li><li><a href="/pages/9d19f1/" class="sidebar-link">10 useCallback基础用法</a></li><li><a href="/pages/8b008f/" class="sidebar-link">11 useMemo基础用法</a></li><li><a href="/pages/4c9695/" class="sidebar-link">12 useRef基础用法</a></li><li><a href="/pages/ede426/" class="sidebar-link">13 useImperativeHandle基础用法</a></li><li><a href="/pages/1b392f/" class="sidebar-link">14 useLayoutEffect基础用法</a></li><li><a href="/pages/e1ebef/" class="sidebar-link">15 useDebugValue基础用法</a></li><li><a href="/pages/c38877/" class="sidebar-link">16 自定义hook</a></li><li><a href="/pages/621c1c/" class="sidebar-link">17 React Hook 总结</a></li><li><a href="/pages/a44117/" aria-current="page" class="active sidebar-link">18 示例：React使用Echarts所用到的hooks</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/a44117/#echarts简介" class="sidebar-link">Echarts简介</a></li><li class="sidebar-sub-header level2"><a href="/pages/a44117/#echarts基础操作" class="sidebar-link">Echarts基础操作</a></li><li class="sidebar-sub-header level2"><a href="/pages/a44117/#针对以上echarts特性-对应的-hooks" class="sidebar-link">针对以上Echarts特性，对应的 hooks</a></li><li class="sidebar-sub-header level2"><a href="/pages/a44117/#使用-封装-echarts示例代码" class="sidebar-link">使用(封装)Echarts示例代码</a></li></ul></li><li><a href="/pages/74a184/" class="sidebar-link">19 useTransition基础用法</a></li><li><a href="/pages/0116b5/" class="sidebar-link">20 React基础知识</a></li><li><a href="/pages/89216e/" class="sidebar-link">21 React扩展阅读</a></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><span data-v-06225672>react</span></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="//github.183.co" target="_blank" title="作者" class="beLink" data-v-06225672>Allen</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2023-09-18</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">18 示例：React使用Echarts所用到的hooks<!----></h1> <div class="page-slot page-slot-top">
+    <div class="wwads-cn wwads-horizontal page-wwads" data-id="136"></div>
+    <style>
+      .page-wwads{
+        width:100%!important;
+        min-height: 0;
+        margin: 0;
+      }
+      .page-wwads .wwads-img img{
+        width:80px!important;
+      }
+      .page-wwads .wwads-poweredby{
+        width: 40px;
+        position: absolute;
+        right: 25px;
+        bottom: 3px;
+      }
+      .wwads-content .wwads-text, .page-wwads .wwads-text{
+        height: 100%;
+        padding-top: 5px;
+        display: block;
+      }
+  </style>
+  </div> <div class="theme-vdoing-content content__default"><h1 id="_18-示例-react使用echarts所用到的hooks"><a href="#_18-示例-react使用echarts所用到的hooks" class="header-anchor">#</a> 18 示例：React使用Echarts所用到的hooks</h1> <p>本篇文章写于 2020年11月13日，距离前面文章已经过去半年，因此本文的讲述风格和示例代码，可能和前面的章节不同。</p> <h2 id="echarts简介"><a href="#echarts简介" class="header-anchor">#</a> Echarts简介</h2> <p>Echarts 是百度公司推出的，基于原生 JS 的图表库，免费开源 ，可用于数据可视化项目。</p> <p>官网地址：https://echarts.apache.org/zh/feature.html</p> <h2 id="echarts基础操作"><a href="#echarts基础操作" class="header-anchor">#</a> Echarts基础操作</h2> <p>1、<strong>Echarts 是基于原生 JS 的库，而不是 React 组件</strong>，需要将 “图表” 挂载到 DOM</p> <p>2、echarts.init(xxx-dom) 是创建 “图表” 的入口函数，该函数将创建创建真正的图表实例，并填充到 xxx-dom 中</p> <p>3、一个图表 对应一个 DOM，N 个图标需要 N 个 DOM</p> <p>4、图表实例通过 setOption(option) 来设置(更新)数据</p> <h2 id="针对以上echarts特性-对应的-hooks"><a href="#针对以上echarts特性-对应的-hooks" class="header-anchor">#</a> 针对以上Echarts特性，对应的 hooks</h2> <p>1、使用 useRef 来勾住 jsx 中的某个 DOM</p> <p>2、使用 useEffect( () =&gt; {}, [] ) 来勾住 React 第一次挂载，并通过 echarts.init(xxx-dom) 创建出真正的图表</p> <p>3、使用 useState 来勾住 创建出的真正图表，以便以后做各种更新操作</p> <p>4、使用 useEffect( () =&gt; {}, [xxx-echart,option] ) 来不断监听组件传递过来的数据变化，并更新图表数据</p> <blockquote><p>补充说明：尽管 NPM 中已经有 echarts-for-react 这个包，已经将 Echarts 封装成可直接使用的 React 组件，但是我并不是建议使用，因为毕竟 Echarts 并不是特别难，没有必要使用别人封装好的。学习本文后，你自己也可以轻松封装自己的 Echarts 组件，灵活方便。</p></blockquote> <h2 id="使用-封装-echarts示例代码"><a href="#使用-封装-echarts示例代码" class="header-anchor">#</a> 使用(封装)Echarts示例代码</h2> <blockquote><p>细节不过多说，此处只演示 2 个组件源码，使用 TypeScript 编写</p> <ol><li>子组件为一个图表，图表是什么类型，由 配置数据 option 中 xAxis.type 的值决定</li> <li>父组件负责调用子组件并传递图表配置数据</li></ol></blockquote> <p><strong>父组件：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React from 'react'
+import { EChartOption } from 'echarts'
+import Echart from '../../components/echart'
+
+import './index.scss'
+
+const option: EChartOption = {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line'
+    }]
+}
+
+const IndexPage: React.FC = () =&gt; {
+    return (
+        &lt;Echart option={option} /&gt;
+    )
+}
+
+export default IndexPage
+</code></pre></div><p><strong>子组件：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React, { useState, useRef, useEffect } from 'react'
+import echarts, { EChartOption, ECharts } from 'echarts'
+
+import './index.scss'
+
+interface EchartProp {
+    option: EChartOption
+}
+
+const Echart: React.FC&lt;EchartProp&gt; = ({ option }) =&gt; {
+
+    const chartRef = useRef&lt;HTMLDivElement&gt;(null) //用来勾住渲染后的 DOM
+    const [echartsInstance, setEchartsInstance] = useState&lt;ECharts&gt;() //用来勾住生成后的 图表实例对象
+
+    //仅第一次挂载时执行，将 DOM 传递给 echarts，通过 echarts.init() 得到真正的图表 JS 对象
+    useEffect(() =&gt; {
+        if (chartRef.current) {
+            setEchartsInstance(echarts.init(chartRef.current))
+        }
+    }, [])
+
+    //监听依赖变化，并根据需要更新图表数据
+    useEffect(() =&gt; {
+        echartsInstance?.setOption(option)
+    }, [echartsInstance, option])
+
+    return (
+        &lt;div ref={chartRef} className='echarts' /&gt;
+    )
+}
+
+export default Echart
+</code></pre></div><p>以上示例中，父组件功能相对简单，负责调用子组件，并将图表配置数据传递给子组件。</p> <p>真正需要关注的就是 子组件，在子组件中分别用到了 useRef、useState、useEffect 这 3 个 hook，尤其是 useEffect 还被使用了 2 次。</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023-09-19, 09:20:46</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/621c1c/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">17 React Hook 总结</div></a> <a href="/pages/74a184/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">19 useTransition基础用法</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/621c1c/" class="prev">17 React Hook 总结</a></span> <span class="next"><a href="/pages/74a184/">19 useTransition基础用法</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:allen@183.co" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="//github.183.co" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://i.y.qq.com/n2/m/share/details/taoge.html?id=8424326180&amp;hosteuin=" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>Allen | MIT License</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6f8ed848.js" defer></script><script src="/assets/js/2.83be7545.js" defer></script><script src="/assets/js/25.c20d5ec5.js" defer></script>
+  </body>
+</html>

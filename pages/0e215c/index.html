@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>03 useState高级用法 | Allen</title>
+    <meta name="generator" content="VuePress 1.9.2">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="rust">
+    <meta name="keywords" content="allen,,blog,vdoing">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.145d8473.css" as="style"><link rel="preload" href="/assets/js/app.6f8ed848.js" as="script"><link rel="preload" href="/assets/js/2.83be7545.js" as="script"><link rel="preload" href="/assets/js/10.5a3204f9.js" as="script"><link rel="prefetch" href="/assets/js/11.02768c01.js"><link rel="prefetch" href="/assets/js/12.2c0a6e69.js"><link rel="prefetch" href="/assets/js/13.aab6b678.js"><link rel="prefetch" href="/assets/js/14.099be2b5.js"><link rel="prefetch" href="/assets/js/15.a608c94d.js"><link rel="prefetch" href="/assets/js/16.e2819852.js"><link rel="prefetch" href="/assets/js/17.86af6682.js"><link rel="prefetch" href="/assets/js/18.c8537385.js"><link rel="prefetch" href="/assets/js/19.eab216d3.js"><link rel="prefetch" href="/assets/js/20.682aa922.js"><link rel="prefetch" href="/assets/js/21.219bb420.js"><link rel="prefetch" href="/assets/js/22.84ecdbb0.js"><link rel="prefetch" href="/assets/js/23.b55b7082.js"><link rel="prefetch" href="/assets/js/24.0828344e.js"><link rel="prefetch" href="/assets/js/25.c20d5ec5.js"><link rel="prefetch" href="/assets/js/26.06149e04.js"><link rel="prefetch" href="/assets/js/27.d221eed5.js"><link rel="prefetch" href="/assets/js/28.53082f18.js"><link rel="prefetch" href="/assets/js/29.eedb3a2c.js"><link rel="prefetch" href="/assets/js/3.136b0782.js"><link rel="prefetch" href="/assets/js/30.43e5e245.js"><link rel="prefetch" href="/assets/js/4.2e56199c.js"><link rel="prefetch" href="/assets/js/5.2ab3c7f2.js"><link rel="prefetch" href="/assets/js/6.fa34b130.js"><link rel="prefetch" href="/assets/js/7.9dab484c.js"><link rel="prefetch" href="/assets/js/8.d763ac36.js"><link rel="prefetch" href="/assets/js/9.845b950f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.145d8473.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Allen" class="logo"> <span class="site-name can-hide">Allen</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/pages/dfd26d/" class="sidebar-link">01 React Hook 简介</a></li><li><a href="/pages/b364c0/" class="sidebar-link">02 useState基础用法</a></li><li><a href="/pages/0e215c/" aria-current="page" class="active sidebar-link">03 useState高级用法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/0e215c/#恢复默认值" class="sidebar-link">恢复默认值</a></li><li class="sidebar-sub-header level2"><a href="/pages/0e215c/#解决数据异步" class="sidebar-link">解决数据异步</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level5"><a href="/pages/0e215c/#解决办法" class="sidebar-link">解决办法：</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/0e215c/#数据类型为objcet的修改方法" class="sidebar-link">数据类型为Objcet的修改方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level5"><a href="/pages/0e215c/#正确的做法" class="sidebar-link">正确的做法：</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/0e215c/#数据类型为array的修改方法" class="sidebar-link">数据类型为Array的修改方法</a></li><li class="sidebar-sub-header level2"><a href="/pages/0e215c/#性能优化" class="sidebar-link">性能优化</a></li><li class="sidebar-sub-header level2"><a href="/pages/0e215c/#自定义hook" class="sidebar-link">自定义Hook</a></li></ul></li><li><a href="/pages/16dc88/" class="sidebar-link">04 useEffect基础用法</a></li><li><a href="/pages/b9c039/" class="sidebar-link">05 useEffect高级用法</a></li><li><a href="/pages/fd14d7/" class="sidebar-link">06 useContext基础用法</a></li><li><a href="/pages/15da39/" class="sidebar-link">07 useContext高级用法</a></li><li><a href="/pages/ab6774/" class="sidebar-link">08 useReducer基础用法</a></li><li><a href="/pages/fd7fdb/" class="sidebar-link">09 useReducer高级用法</a></li><li><a href="/pages/9d19f1/" class="sidebar-link">10 useCallback基础用法</a></li><li><a href="/pages/8b008f/" class="sidebar-link">11 useMemo基础用法</a></li><li><a href="/pages/4c9695/" class="sidebar-link">12 useRef基础用法</a></li><li><a href="/pages/ede426/" class="sidebar-link">13 useImperativeHandle基础用法</a></li><li><a href="/pages/1b392f/" class="sidebar-link">14 useLayoutEffect基础用法</a></li><li><a href="/pages/e1ebef/" class="sidebar-link">15 useDebugValue基础用法</a></li><li><a href="/pages/c38877/" class="sidebar-link">16 自定义hook</a></li><li><a href="/pages/621c1c/" class="sidebar-link">17 React Hook 总结</a></li><li><a href="/pages/a44117/" class="sidebar-link">18 示例：React使用Echarts所用到的hooks</a></li><li><a href="/pages/74a184/" class="sidebar-link">19 useTransition基础用法</a></li><li><a href="/pages/0116b5/" class="sidebar-link">20 React基础知识</a></li><li><a href="/pages/89216e/" class="sidebar-link">21 React扩展阅读</a></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><span data-v-06225672>react</span></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="//github.183.co" target="_blank" title="作者" class="beLink" data-v-06225672>Allen</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2023-09-06</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">03 useState高级用法<!----></h1> <div class="page-slot page-slot-top">
+    <div class="wwads-cn wwads-horizontal page-wwads" data-id="136"></div>
+    <style>
+      .page-wwads{
+        width:100%!important;
+        min-height: 0;
+        margin: 0;
+      }
+      .page-wwads .wwads-img img{
+        width:80px!important;
+      }
+      .page-wwads .wwads-poweredby{
+        width: 40px;
+        position: absolute;
+        right: 25px;
+        bottom: 3px;
+      }
+      .wwads-content .wwads-text, .page-wwads .wwads-text{
+        height: 100%;
+        padding-top: 5px;
+        display: block;
+      }
+  </style>
+  </div> <div class="theme-vdoing-content content__default"><h1 id="_03-usestate高级用法"><a href="#_03-usestate高级用法" class="header-anchor">#</a> 03 useState高级用法</h1> <p>所谓高级用法，只不过是一些深层知识点和实用技巧，你甚至可以把本章当做对前面知识点的一个巩固和学习。</p> <h2 id="恢复默认值"><a href="#恢复默认值" class="header-anchor">#</a> 恢复默认值</h2> <p>组件需求：实现一个计数器，有3个按钮，点击后分别实现：恢复默认值、点击+1、点击-1</p> <p>实现代码：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">function</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> initCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>initCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+      <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">{</span>count<span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token function">setCount</span><span class="token punctuation">(</span>initCount<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>init<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token function">setCount</span><span class="token punctuation">(</span>count<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token function">setCount</span><span class="token punctuation">(</span>count<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">export</span> <span class="token keyword">default</span> Component<span class="token punctuation">;</span>
+</code></pre></div><p>代码分析：<br>
+1、通过额外定义一个变量initCount=0，作为count的默认值；<br>
+2、任何时候想恢复默认值，直接将initCount赋值给count；</p> <h2 id="解决数据异步"><a href="#解决数据异步" class="header-anchor">#</a> 解决数据异步</h2> <p>还是基于上面那个示例，假设现在新增1个按钮，点击该按钮后执行以下代码：</p> <div class="language- extra-class"><pre><code>for(let i=0; i&lt;3; i++){
+  setCount(count+1);
+}
+</code></pre></div><p>通过for循环，执行了3次setCount(count+1)，那么你觉得count会 +3 吗？<br>
+答案是：肯定不会</p> <p>无论for循环执行几次，最终实际结果都将是仅仅执行一次 +1。</p> <p>为什么？<br>
+类组件中setState赋值过程是异步的，同样在Hook中 setXxx 赋值也是异步的，比如上述代码中的setCount。</p> <p>虽然执行了3次setCount(count+1)，可是每一次修改后的count并不是立即生效的。当第2次和第3次执行时获取到count的值和第1次获取到的count值是一样的，所以最终其实相当于仅执行了1次。</p> <h5 id="解决办法"><a href="#解决办法" class="header-anchor">#</a> 解决办法：</h5> <p>你肯定第一时间想到的是这样解决方式：</p> <div class="language- extra-class"><pre><code>let num = count;
+for(let i=0; i&lt;3; i++){
+  num +=1;
+}
+setCount(num);
+</code></pre></div><p>这样做肯定没问题，只不过有更简便、性能更高的方式。</p> <p>和类组件中解决异步的办法类似，就是不直接赋值，而是采用“箭头函数返回值的形式”赋值。</p> <p>把代码修改为：</p> <div class="language- extra-class"><pre><code>for(let i=0; i&lt;3; i++){
+  setCount(prevData =&gt; {return prevData+1});
+  //可以简化为 setCount(prevData =&gt; prevData+1);
+}
+</code></pre></div><p>代码分析：<br>
+1、prevData为我们定义的一个形参，指当前count应该的值；<br>
+2、{return prevData+1} 中，将 prevData+1，并将运算结果return出去。当然也非常推荐使用更加简化的写法：setCount(prevData =&gt; prevData+1)；<br>
+3、最终将prevData赋值给count；</p> <p>补充说明：你可以将prevData修改成任意你喜欢的变量名称，比如prev，只需要确保和后面return里的一致即可。</p> <h2 id="数据类型为objcet的修改方法"><a href="#数据类型为objcet的修改方法" class="header-anchor">#</a> 数据类型为Objcet的修改方法</h2> <p>之前的示例中，每个useState对应的值都是简单的string或number，如果对应的值是object，又该如何处理呢？</p> <p>例如：</p> <div class="language- extra-class"><pre><code>const [person, setPerson] = useState({name:'puxiao',age:34});
+</code></pre></div><p>若想将age的值修改为18，该怎么写？</p> <p>如果你有类组件编程经验，你肯定第一时间想是这样的：</p> <div class="language- extra-class"><pre><code>setPerson({age:18});
+</code></pre></div><p>在类组件中，setState是执行的是“异步对比累加赋值”，何为“对比”？  就是先对比之前数据属性中是否有age，如果有则修改age值，同时不会影响到其他属性的值。我猜测react是使用ES6中新增加的Object.assign()这个函数来实现这一步的。</p> <p>但是，用useState定义的修改函数 setXxxx，例如setPerson中，执行的是 “异步直接赋值”。</p> <p>请看实际执行的结果：</p> <div class="language- extra-class"><pre><code>console.log(person);//{name:'puxiao',age:34}
+setPerson({age:18});
+console.log(person);//{age:18}
+</code></pre></div><p>没错，虽然只是希望修改age的值，但是由于是“直接赋值”，导致{age:18}替换了整个{name:'puxiao',age:34}</p> <h5 id="正确的做法"><a href="#正确的做法" class="header-anchor">#</a> 正确的做法：</h5> <p>我们需要先将person拷贝一份，修改之后再进行赋值。</p> <div class="language- extra-class"><pre><code>let newData = {...person};
+newData.age = 18;
+setPerson(newData);
+</code></pre></div><p>以上代码还有一种简写形式：</p> <div class="language- extra-class"><pre><code>setPerson({...person,age:18}); //这种简写是解构赋值带来的，并不是React提供的
+</code></pre></div><p>代码分析：<br>
+1、先通过...person，将原有person做一次解构，得到一份复制品(浅拷贝)；<br>
+2、修改age的值；<br>
+3、将修改过后的新数据，通过setPerson赋值给person；</p> <p>完整示例：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> <span class="token punctuation">[</span>person<span class="token punctuation">,</span> setPerson<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'puxiao'</span><span class="token punctuation">,</span><span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">34</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">nameChangeHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">setPerson</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token operator">...</span>person<span class="token punctuation">,</span><span class="token literal-property property">name</span><span class="token operator">:</span>eve<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">ageChangeHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">setPerson</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token operator">...</span>person<span class="token punctuation">,</span><span class="token literal-property property">age</span><span class="token operator">:</span>eve<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">'text'</span> value<span class="token operator">=</span><span class="token punctuation">{</span>person<span class="token punctuation">.</span>name<span class="token punctuation">}</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span>nameChangeHandler<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">'number'</span> value<span class="token operator">=</span><span class="token punctuation">{</span>person<span class="token punctuation">.</span>age<span class="token punctuation">}</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span>ageChangeHandler<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token punctuation">{</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">export</span> <span class="token keyword">default</span> Component<span class="token punctuation">;</span>
+</code></pre></div><h2 id="数据类型为array的修改方法"><a href="#数据类型为array的修改方法" class="header-anchor">#</a> 数据类型为Array的修改方法</h2> <p>和数据类型为Object相似，都是需要通过先拷贝一次，修改后再整体赋值。</p> <p>这里举一个简单的小例子，以下代码实现了一个类似学习计划列表的功能组件。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> <span class="token punctuation">[</span>str<span class="token punctuation">,</span> setStr<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> <span class="token punctuation">[</span>arr<span class="token punctuation">,</span> setArr<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'react'</span><span class="token punctuation">,</span> <span class="token string">'Koa'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">inputChangeHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">setStr</span><span class="token punctuation">(</span>eve<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">addHeadHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">setArr</span><span class="token punctuation">(</span><span class="token punctuation">[</span>str<span class="token punctuation">,</span><span class="token operator">...</span>arr<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//添加至头</span>
+        <span class="token function">setStr</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">addEndHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">setArr</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">,</span> str<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//添加至尾</span>
+        <span class="token function">setStr</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">delHeadHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> new_arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        new_arr<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//从头删除1项目</span>
+        <span class="token function">setArr</span><span class="token punctuation">(</span>new_arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">delEndHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> new_arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        new_arr<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//从尾删除1项目</span>
+        <span class="token function">setArr</span><span class="token punctuation">(</span>new_arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">delByIndex</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> index <span class="token operator">=</span> eve<span class="token punctuation">.</span>target<span class="token punctuation">.</span>attributes<span class="token punctuation">.</span>index<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token keyword">let</span> new_arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        new_arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//删除当前项</span>
+        <span class="token function">setArr</span><span class="token punctuation">(</span>new_arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">'text'</span> value<span class="token operator">=</span><span class="token punctuation">{</span>str<span class="token punctuation">}</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span>inputChangeHandler<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>addHeadHandler<span class="token punctuation">}</span> <span class="token operator">&gt;</span>添加至头<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>addEndHandler<span class="token punctuation">}</span> <span class="token operator">&gt;</span>添加至尾<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>delHeadHandler<span class="token punctuation">}</span> <span class="token operator">&gt;</span>从头删除<span class="token number">1</span>项<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>delEndHandler<span class="token punctuation">}</span> <span class="token operator">&gt;</span>从尾删除<span class="token number">1</span>项<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+            <span class="token punctuation">{</span>arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>
+                <span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">item</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>index<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token operator">&gt;</span>学习<span class="token punctuation">{</span>index<span class="token punctuation">}</span> <span class="token operator">-</span>  <span class="token punctuation">{</span>item<span class="token punctuation">}</span>
+                        <span class="token operator">&lt;</span>span index<span class="token operator">=</span><span class="token punctuation">{</span>index<span class="token punctuation">}</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>delByIndex<span class="token punctuation">}</span> style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">cursor</span><span class="token operator">:</span> <span class="token string">'pointer'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">export</span> <span class="token keyword">default</span> Component<span class="token punctuation">;</span>
+</code></pre></div><h2 id="性能优化"><a href="#性能优化" class="header-anchor">#</a> 性能优化</h2> <p>通过 setXxx 设置新值，但是如果新值和当前值完全一样，那么会引发React重新渲染吗？</p> <p>通过React官方文档可以知道，当使用 setXxx 赋值时，Hook会使用Object.is()来对比当前值和新值，结果为true则不渲染，结果为false就会重新渲染。</p> <div class="language- extra-class"><pre><code>let str='a';
+Object.is(str,'a'); //true
+
+let str='18';
+Object.is(str,18); //str为String类型，18为Number类型，因此结果为false
+
+let obj={name:'a'};
+Object.is(obj,{name:'a'}); //false
+//虽然obj和{name:'a'}字面上相同，但是obj==={name:'a'}为false，并且在Object.is()运算下认为两者不是同一个对象
+//事实上他们确实不是同一个对象，他们各自占用了一份内存
+
+let obj={name:'a'};
+let a=obj;
+let b=obj;
+Object.is(a,b); //因为a和b都指向obj，因此结果为true
+</code></pre></div><p>由上面测试可以看出：<br>
+1、对于简单类型的值，例如String、Number 新旧值一样的情况下是不会引起重新渲染的；<br>
+2、对于复杂类型的值，即使新旧值 “看上去是一样的” 也会引起重新渲染。除非新旧值指向同一个对象，或者可以说成新旧值分别是同一个对象的引用；</p> <p>采用复杂类型的值不是不可以用，很多场景下都需要用到，但是请记得上面的测试结果。</p> <p>为了可能存在的性能问题，如果可以，最好避免使用复杂类型的值。</p> <h2 id="自定义hook"><a href="#自定义hook" class="header-anchor">#</a> 自定义Hook</h2> <p>所谓自定义Hook，就是将Hook函数从函数组件中抽离，抽离之后多个函数组件可以共用该自定义Hook，共享该Hook的逻辑。</p> <p>因为目前仅学习了useState，再多学习几个Hook函数后，会单独拿出一个篇章来讲解如何自定义Hook。</p> <hr> <p>至此，关于useState高级用法已经讲完，相信你已经掌握了useState的使用方法。</p> <p>useState是本系列文章讲解的第一个Hook函数，同时也是使用频率最高的Hook，甚至可以说useState是函数组件开发的基石，因此本章稍显啰嗦，但目的就是希望你能理解透彻。</p> <p>在后面讲解其他Hook函数时，将会尽量使用简洁、高冷的文章风格。</p> <p>接下来学习第2个Hook函数useEffect。</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023-09-19, 09:20:46</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/b364c0/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">02 useState基础用法</div></a> <a href="/pages/16dc88/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">04 useEffect基础用法</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/b364c0/" class="prev">02 useState基础用法</a></span> <span class="next"><a href="/pages/16dc88/">04 useEffect基础用法</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:allen@183.co" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="//github.183.co" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://i.y.qq.com/n2/m/share/details/taoge.html?id=8424326180&amp;hosteuin=" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>Allen | MIT License</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6f8ed848.js" defer></script><script src="/assets/js/2.83be7545.js" defer></script><script src="/assets/js/10.5a3204f9.js" defer></script>
+  </body>
+</html>

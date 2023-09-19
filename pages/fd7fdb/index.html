@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>09 useReducer高级用法 | Allen</title>
+    <meta name="generator" content="VuePress 1.9.2">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="rust">
+    <meta name="keywords" content="allen,,blog,vdoing">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.145d8473.css" as="style"><link rel="preload" href="/assets/js/app.6f8ed848.js" as="script"><link rel="preload" href="/assets/js/2.83be7545.js" as="script"><link rel="preload" href="/assets/js/16.e2819852.js" as="script"><link rel="prefetch" href="/assets/js/10.5a3204f9.js"><link rel="prefetch" href="/assets/js/11.02768c01.js"><link rel="prefetch" href="/assets/js/12.2c0a6e69.js"><link rel="prefetch" href="/assets/js/13.aab6b678.js"><link rel="prefetch" href="/assets/js/14.099be2b5.js"><link rel="prefetch" href="/assets/js/15.a608c94d.js"><link rel="prefetch" href="/assets/js/17.86af6682.js"><link rel="prefetch" href="/assets/js/18.c8537385.js"><link rel="prefetch" href="/assets/js/19.eab216d3.js"><link rel="prefetch" href="/assets/js/20.682aa922.js"><link rel="prefetch" href="/assets/js/21.219bb420.js"><link rel="prefetch" href="/assets/js/22.84ecdbb0.js"><link rel="prefetch" href="/assets/js/23.b55b7082.js"><link rel="prefetch" href="/assets/js/24.0828344e.js"><link rel="prefetch" href="/assets/js/25.c20d5ec5.js"><link rel="prefetch" href="/assets/js/26.06149e04.js"><link rel="prefetch" href="/assets/js/27.d221eed5.js"><link rel="prefetch" href="/assets/js/28.53082f18.js"><link rel="prefetch" href="/assets/js/29.eedb3a2c.js"><link rel="prefetch" href="/assets/js/3.136b0782.js"><link rel="prefetch" href="/assets/js/30.43e5e245.js"><link rel="prefetch" href="/assets/js/4.2e56199c.js"><link rel="prefetch" href="/assets/js/5.2ab3c7f2.js"><link rel="prefetch" href="/assets/js/6.fa34b130.js"><link rel="prefetch" href="/assets/js/7.9dab484c.js"><link rel="prefetch" href="/assets/js/8.d763ac36.js"><link rel="prefetch" href="/assets/js/9.845b950f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.145d8473.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Allen" class="logo"> <span class="site-name can-hide">Allen</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/9088dd/" class="nav-link">rust</a></div><div class="nav-item"><a href="/pages/b63bcd/" class="nav-link">go</a></div><div class="nav-item"><a href="/pages/dfd26d/" class="nav-link">react</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/pages/dfd26d/" class="sidebar-link">01 React Hook 简介</a></li><li><a href="/pages/b364c0/" class="sidebar-link">02 useState基础用法</a></li><li><a href="/pages/0e215c/" class="sidebar-link">03 useState高级用法</a></li><li><a href="/pages/16dc88/" class="sidebar-link">04 useEffect基础用法</a></li><li><a href="/pages/b9c039/" class="sidebar-link">05 useEffect高级用法</a></li><li><a href="/pages/fd14d7/" class="sidebar-link">06 useContext基础用法</a></li><li><a href="/pages/15da39/" class="sidebar-link">07 useContext高级用法</a></li><li><a href="/pages/ab6774/" class="sidebar-link">08 useReducer基础用法</a></li><li><a href="/pages/fd7fdb/" aria-current="page" class="active sidebar-link">09 useReducer高级用法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/fd7fdb/#使用usereducer来管理复杂类型的数据" class="sidebar-link">使用useReducer来管理复杂类型的数据</a></li><li class="sidebar-sub-header level2"><a href="/pages/fd7fdb/#使用usecontext和usereducer实现操作全局共享数据" class="sidebar-link">使用useContext和useReducer实现操作全局共享数据</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level4"><a href="/pages/fd7fdb/#需求分析" class="sidebar-link">需求分析</a></li><li class="sidebar-sub-header level4"><a href="/pages/fd7fdb/#实现原理" class="sidebar-link">实现原理</a></li><li class="sidebar-sub-header level4"><a href="/pages/fd7fdb/#实现思路" class="sidebar-link">实现思路</a></li><li class="sidebar-sub-header level4"><a href="/pages/fd7fdb/#补充说明" class="sidebar-link">补充说明</a></li><li class="sidebar-sub-header level4"><a href="/pages/fd7fdb/#伪代码演示" class="sidebar-link">伪代码演示</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/fd7fdb/#为什么不使用redux" class="sidebar-link">为什么不使用Redux？</a></li><li class="sidebar-sub-header level2"><a href="/pages/fd7fdb/#忘掉-redux-忘掉-usereducer-usecontext-拥抱-recoil-吧" class="sidebar-link">忘掉 Redux，忘掉 useReducer+useContext，拥抱 Recoil 吧！</a></li><li class="sidebar-sub-header level2"><a href="/pages/fd7fdb/#什么时候用usestate-什么时候用usereducer" class="sidebar-link">什么时候用useState？什么时候用useReducer？</a></li></ul></li><li><a href="/pages/9d19f1/" class="sidebar-link">10 useCallback基础用法</a></li><li><a href="/pages/8b008f/" class="sidebar-link">11 useMemo基础用法</a></li><li><a href="/pages/4c9695/" class="sidebar-link">12 useRef基础用法</a></li><li><a href="/pages/ede426/" class="sidebar-link">13 useImperativeHandle基础用法</a></li><li><a href="/pages/1b392f/" class="sidebar-link">14 useLayoutEffect基础用法</a></li><li><a href="/pages/e1ebef/" class="sidebar-link">15 useDebugValue基础用法</a></li><li><a href="/pages/c38877/" class="sidebar-link">16 自定义hook</a></li><li><a href="/pages/621c1c/" class="sidebar-link">17 React Hook 总结</a></li><li><a href="/pages/a44117/" class="sidebar-link">18 示例：React使用Echarts所用到的hooks</a></li><li><a href="/pages/74a184/" class="sidebar-link">19 useTransition基础用法</a></li><li><a href="/pages/0116b5/" class="sidebar-link">20 React基础知识</a></li><li><a href="/pages/89216e/" class="sidebar-link">21 React扩展阅读</a></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><span data-v-06225672>react</span></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="//github.183.co" target="_blank" title="作者" class="beLink" data-v-06225672>Allen</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2023-09-07</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">09 useReducer高级用法<!----></h1> <div class="page-slot page-slot-top">
+    <div class="wwads-cn wwads-horizontal page-wwads" data-id="136"></div>
+    <style>
+      .page-wwads{
+        width:100%!important;
+        min-height: 0;
+        margin: 0;
+      }
+      .page-wwads .wwads-img img{
+        width:80px!important;
+      }
+      .page-wwads .wwads-poweredby{
+        width: 40px;
+        position: absolute;
+        right: 25px;
+        bottom: 3px;
+      }
+      .wwads-content .wwads-text, .page-wwads .wwads-text{
+        height: 100%;
+        padding-top: 5px;
+        display: block;
+      }
+  </style>
+  </div> <div class="theme-vdoing-content content__default"><h1 id="_09-usereducer高级用法"><a href="#_09-usereducer高级用法" class="header-anchor">#</a> 09 useReducer高级用法</h1> <p>所谓高级用法，只不过是一些深层知识点和实用技巧，你甚至可以把本章当做对前面知识点的一个巩固和学习。</p> <br> <h2 id="使用usereducer来管理复杂类型的数据"><a href="#使用usereducer来管理复杂类型的数据" class="header-anchor">#</a> 使用useReducer来管理复杂类型的数据</h2> <p>举例，若某组件内通过ajax请求数据，获取最新一条站内短信文字，需要组件显示整个ajax过程及结果：<br>
+1、当ajax开始请求时，界面显示“loading...”；<br>
+2、当ajax请求发生错误时，界面显示“wrong!”;<br>
+3、当ajax请求成功获取数据时，界面显示获取到的数据内容；</p> <p>如果我们使用useState来实现上述功能，伪代码如下：</p> <div class="language- extra-class"><pre><code>function Component() {
+  const [loading,setLoading] = useState(true); //是否ajax请求中，默认为true
+  const [result,setResult] = useState(''); //请求数据内容，默认为''
+  const [error,setError] = useState(false); //请求是否发生错误，默认为false
+
+  {
+      //ajax请求成功
+      setLoading(false);
+      setResult('You have a good news!');//请注意，这是一行伪代码，只是为了演示，并不是真正ajax获取的结果
+      setError(false);
+
+      //ajax请求错误
+      setLoading(false);
+      setError(true);
+  }
+
+  return &lt;div&gt;
+    {loading ? 'loading...' : result}
+    {error ? 'wrong!' : null}
+  &lt;/div&gt;
+}
+</code></pre></div><p>如果我们使用useReducer来实现，则可将上述3个变量都放在我们定义的变量state中，伪代码如下：</p> <div class="language- extra-class"><pre><code>const initralData = {loading: true,result: '',error: false};
+
+const reducer = (state, action) =&gt; {
+  switch (action.type) {
+    case 'succes':
+        return {loading:false,result:action.res,error:false}
+    case 'error':
+        return {loading:false,error:true}
+  }
+}
+
+function Component() {
+  const [state, dispatch] = useReducer(reducer, initralData);
+
+  {
+      //ajax请求成功
+      dispatch({type:'succes',res:'You have a good news!'});
+
+      //ajax请求错误
+      dispatch({type:'error'});
+  }
+
+  return &lt;div&gt;
+    {state.loading ? 'loading...' : state.result}
+    {state.error ? 'wrong!' : null}
+  &lt;/div&gt;
+}
+</code></pre></div><p>你可能会有疑问？<br>
+1、为什么看上去使用useReducer后代码变得更多？<br>
+答：因为使用useReducer，我们将修改数据拆分为2个部分，即“抛出修改事件和事件修改处理函数”。虽然代码增多了，但是逻辑更加清晰。</p> <p>2、为什么不使用useState，同时把它对应的变量也做成一个obj，就像useReducer的initralData那种？<br>
+答：单纯从1次ajax请求很难看出使用useState或useReducer的差异，但是试想一下多次且ajax返回值在结构类型上容易发生变更，那么使用useReducer这种更加利于代码阅读、功能扩展。</p> <br> <h2 id="使用usecontext和usereducer实现操作全局共享数据"><a href="#使用usecontext和usereducer实现操作全局共享数据" class="header-anchor">#</a> 使用useContext和useReducer实现操作全局共享数据</h2> <p>试想一下，如果想实现以下组件需求：<br>
+1、父组件中定义某变量xx；<br>
+2、任何层级下的子组件都可以轻松获取变量xx、并且可以“修改”变量xx；</p> <p>注意这里的修改是加引号的，因为事实上你永远无法以直接赋值的方式进行修改，永远都需要调用父级组件提供的方法来修改。</p> <h4 id="需求分析"><a href="#需求分析" class="header-anchor">#</a> 需求分析</h4> <p>首先这个功能是类组件无法做到的，也是React 16.8版本以前根本不能实现的，今天，当你使用Hook可轻松实现类似 Redux 共享数据管理功能。</p> <h4 id="实现原理"><a href="#实现原理" class="header-anchor">#</a> 实现原理</h4> <p>用 useContext 实现“获取全局数据”<br>
+用 useReducer 实现“修改全局数据”</p> <h4 id="实现思路"><a href="#实现思路" class="header-anchor">#</a> 实现思路</h4> <p>1、用React.createContext()定义一个全局数据对象；<br>
+2、在父组件中用 useReducer 定义全局变量xx和负责抛出修改事件的dispatch；<br>
+3、在父组件之外，定义负责具体修改全局变量的处理函数reducer，根据修改xx事件类型和参数，执行修改xx的值；<br>
+4、在父组件中用 &lt;XxxContext.Provider value=&gt; 标签把 全局共享数据和负责抛出修改xx的dispatch 暴露给子组件；<br>
+5、在子组件中用 useContext 获取全局变量；<br>
+6、在子组件中用 xxContext.dispatch 去抛出修改xx的事件，携带修改事件类型和参数；</p> <h4 id="补充说明"><a href="#补充说明" class="header-anchor">#</a> 补充说明</h4> <p>上面一直提到了 “抛出事件” “事件处理函数” &quot;dispatch&quot; 都是字面上的，不是真正意义上的事件驱动。  这些都只是 React 暴露给我们的函数或形参。 真正的事件驱动是由 React Hook 底层为我们完成的。</p> <p>以上观点仅为个人理解，不能保证100%正确。</p> <h4 id="伪代码演示"><a href="#伪代码演示" class="header-anchor">#</a> 伪代码演示</h4> <p>假设React组件需求为：<br>
+1、有全局数据变量count；<br>
+2、不同层级的子组件均可获取并修改全局变量count；</p> <p>共享对象 代码如下：</p> <div class="language- extra-class"><pre><code>import React from 'react';
+const CountContext = React.createContext();
+export default CountContext;
+</code></pre></div><p>父组件 代码如下：</p> <div class="language-jsx extra-class"><pre class="language-jsx"><code>    <span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useReducer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+    <span class="token keyword">import</span> CountContext <span class="token keyword">from</span> <span class="token string">'./CountContext'</span><span class="token punctuation">;</span>
+    <span class="token keyword">import</span> ComponentA <span class="token keyword">from</span> <span class="token string">'./ComponentA'</span><span class="token punctuation">;</span>
+    <span class="token keyword">import</span> ComponentB <span class="token keyword">from</span> <span class="token string">'./ComponentB'</span><span class="token punctuation">;</span>
+    <span class="token keyword">import</span> ComponentC <span class="token keyword">from</span> <span class="token string">'./ComponentC'</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">const</span> initialCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//定义count的默认值</span>
+    
+    <span class="token comment">//修改count事件处理函数，根据修改参数进行处理</span>
+    <span class="token keyword">function</span> <span class="token function">reducer</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//注意这里先判断事件类型，然后结合携带的参数param 来最终修改count</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">'add'</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> state <span class="token operator">+</span> action<span class="token punctuation">.</span>param<span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'sub'</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> state <span class="token operator">-</span> action<span class="token punctuation">.</span>param<span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'mul'</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> state <span class="token operator">*</span> action<span class="token punctuation">.</span>param<span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'reset'</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> initialCount<span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'what?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">function</span> <span class="token function">ParentComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//定义全局变量count，以及负责抛出修改事件的dispatch</span>
+      <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> dispatch<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useReducer</span><span class="token punctuation">(</span>reducer<span class="token punctuation">,</span> initialCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+      <span class="token comment">//请注意：value={{count,dispatch} 是整个代码的核心，把将count、dispatch暴露给所有子组件</span>
+      <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">CountContext.Provider</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>count<span class="token punctuation">,</span>dispatch<span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+            ParentComponent - count=</span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ComponentA</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ComponentB</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ComponentC</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">CountContext.Provider</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">export</span> <span class="token keyword">default</span> ParentComponent<span class="token punctuation">;</span>
+</code></pre></div><p>子组件A 代码如下：</p> <div class="language- extra-class"><pre><code>import React,{ useState, useContext } from 'react';
+import CountContext from './CountContext';
+
+function CopmpoentA() {
+  const [param,setParam] = useState(1);
+  //引入全局共享对象，获取全局变量count，以及修改count对应的dispatch
+  const countContext = useContext(CountContext);
+
+  const inputChangeHandler = (eve) =&gt; {
+    setParam(eve.target.value);
+  }
+
+  const doHandler = () =&gt; {
+    //若想修改全局count，先获取count对应的修改抛出事件对象dispatch，然后通过dispatch将修改内容抛出
+    //抛出的修改内容为：{type:'add',param:xxx}，即告诉count的修改事件处理函数，本次修改的类型为add，参数是param
+    //这里的add和param完全是根据自己实际需求自己定义的
+    countContext.dispatch({type:'add',param:Number(param)});
+  }
+
+  const resetHandler = () =&gt; {
+    countContext.dispatch({type:'reset'});
+  }
+
+  return &lt;div&gt;
+        ComponentA - count={countContext.count}
+        &lt;input type='number' value={param} onChange={inputChangeHandler} /&gt;
+        &lt;button onClick={doHandler}&gt;add {param}&lt;/button&gt;
+        &lt;button onClick={resetHandler}&gt;reset&lt;/button&gt;
+    &lt;/div&gt;
+}
+
+export default CopmpoentA;
+</code></pre></div><p>总结：<br>
+1、3个子组件他们主要区别是组件内 doHandler 函数，对count进行不同形式的修改；<br>
+2、3个子组件分别可以实现对全局变量 count 的获取与修改；<br>
+3、当任何一个子组件对count进行了修改，都会立即反映在其他子组件中，实现子组件之间的数据共享。</p> <p>至此，实现了比较简单的，类似 Redux 全局数据管理效果。</p> <br> <h2 id="为什么不使用redux"><a href="#为什么不使用redux" class="header-anchor">#</a> 为什么不使用Redux？</h2> <p>这个问题以前提出过，现在可以明确回答：因为我自己使用 useReducer + useContext 自己可以轻松实现，干嘛还要用Redux。<br>
+再见 Redux。</p> <br> <br> <blockquote><p>以下内容更新于 2021.05.18</p></blockquote> <h2 id="忘掉-redux-忘掉-usereducer-usecontext-拥抱-recoil-吧"><a href="#忘掉-redux-忘掉-usereducer-usecontext-拥抱-recoil-吧" class="header-anchor">#</a> 忘掉 Redux，忘掉 useReducer+useContext，拥抱 Recoil 吧！</h2> <p>强烈推荐使用 React 开发人员针对 Hooks 函数组件推出的新一代状态管理库：Recoil</p> <p>Recoil 官方网站：https://recoiljs.org/</p> <p>我写的 Recoil 教程：https://github.com/puxiao/recoil-tutorial</p> <blockquote><p>以上内容更新于 2021.05.18</p></blockquote> <br> <br> <h2 id="什么时候用usestate-什么时候用usereducer"><a href="#什么时候用usestate-什么时候用usereducer" class="header-anchor">#</a> 什么时候用useState？什么时候用useReducer？</h2> <p>本人的建议是：组件自己内部的简单逻辑变量用useState、多个组件之间共享的复杂逻辑变量用useReducer。</p> <hr> <p>至此，关于useReducer高级用法已经讲完，useReducer可以让我们实现复杂逻辑的数据修改，结合useContext更能做到全局数据共享和修改。</p> <p>目前已经学习过的4个Hook函数useState、useEffect、useContext、useReducer，他们都是用来实现组件某些具体业务功能的，而接下来要学习的Hook函数则是用来提高组件整体性能的，例如第5个Hook函数useCallback和第6个Hook函数useMemo。</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023-09-19, 09:20:46</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/ab6774/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">08 useReducer基础用法</div></a> <a href="/pages/9d19f1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">10 useCallback基础用法</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/ab6774/" class="prev">08 useReducer基础用法</a></span> <span class="next"><a href="/pages/9d19f1/">10 useCallback基础用法</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:allen@183.co" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="//github.183.co" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://i.y.qq.com/n2/m/share/details/taoge.html?id=8424326180&amp;hosteuin=" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>Allen | MIT License</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6f8ed848.js" defer></script><script src="/assets/js/2.83be7545.js" defer></script><script src="/assets/js/16.e2819852.js" defer></script>
+  </body>
+</html>
