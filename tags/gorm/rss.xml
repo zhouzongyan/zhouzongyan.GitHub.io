@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gorm on 热爱生活与梦想</title><link>https://chn.gg/tags/gorm/</link><description>Recent content in Gorm on 热爱生活与梦想</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 04 Jun 2024 09:12:25 +0800</lastBuildDate><atom:link href="https://chn.gg/tags/gorm/rss.xml" rel="self" type="application/rss+xml"/><item><title>Gorm中修改mysql主键的方法</title><link>https://chn.gg/post/go/gorm%E4%B8%AD%E4%BF%AE%E6%94%B9mysql%E4%B8%BB%E9%94%AE%E7%9A%84%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 04 Jun 2024 09:12:25 +0800</pubDate><guid>https://chn.gg/post/go/gorm%E4%B8%AD%E4%BF%AE%E6%94%B9mysql%E4%B8%BB%E9%94%AE%E7%9A%84%E6%96%B9%E6%B3%95/</guid><description>&lt;h3 id="一为什么要修改mysql主键策略">一、为什么要修改mysql主键策略
+&lt;a class="header-anchor" href="#%e4%b8%80%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e4%bf%ae%e6%94%b9mysql%e4%b8%bb%e9%94%ae%e7%ad%96%e7%95%a5">&lt;/a>
+&lt;/h3>&lt;p>1、我们创建mysql数据表的时候正常操作都是采用id自增类型,但是往往会造成以下几个问题
+让别人可以猜到你数据库的数据量多少,甚至可以根据当前看到的id可以手动的修改浏览器上id来访问下一条数据
+如果分表后会造成主键id是一样的
+2、正常的做法可以修改mysql主键策略
+直接使用uuid来作为主键,但是这样不好的地方是无序的,不会根据从前往后排列
+使用雪花算法生成一个唯一的id&lt;/p></description></item></channel></rss>
